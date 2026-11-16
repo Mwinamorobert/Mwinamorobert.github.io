@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Makazi Homes | Demo website by Robert Bulemi Charles</title>
+<meta name="description" content="Search homes to rent or buy, filter by town, bedrooms and price, save favourites and book a viewing. A demo property website built by Robert Bulemi Charles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#171614; --card:#221f1c; --line:#38342f; --text:#f1ece1; --muted:#b0a999;
+  --green:#9bcf7a; --sky:#8cc8ff; --ink:#171614; --field:#1b1917;
+  --display:"Young Serif",Georgia,"Times New Roman",serif;
+  --body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0}
+p{margin:0 0 1rem;max-width:60ch}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;gap:1rem}
+.logo{font:400 1.5rem var(--display);text-decoration:none}
+.logo b{color:var(--green);font-weight:400}
+.savedbtn{font:700 .95rem var(--body);background:transparent;color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:.5rem 1.1rem;cursor:pointer}
+.savedbtn[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--ink)}
+
+.hero{padding:2.2rem 0 1.8rem}
+.hero h1{font-size:clamp(2.4rem,7vw,4.4rem);max-width:14ch}
+.hero p{color:var(--muted);font-size:1.1rem;margin-top:1rem}
+
+.app{display:grid;grid-template-columns:290px 1fr;gap:2rem;padding-bottom:3rem;align-items:start}
+.filters{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.3rem;position:sticky;top:1rem}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--field);border-radius:999px;padding:4px;margin-bottom:1.2rem}
+.seg button{font:700 .95rem var(--body);border:0;background:transparent;color:var(--muted);padding:.55rem;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--green);color:var(--ink)}
+.filters label,.flabel{display:block;font-weight:700;font-size:.88rem;margin-bottom:1rem}
+.filters select{display:block;width:100%;margin-top:.3rem;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;background:var(--field);color:var(--text);font:500 .97rem var(--body)}
+input[type=range]{width:100%;margin:.5rem 0 .1rem;accent-color:var(--green)}
+.pl{color:var(--green);font-weight:700;display:block}
+.beds{display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap}
+.chip{font:700 .88rem var(--body);background:transparent;color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:.3rem .8rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--ink);border-color:var(--text)}
+.reset{background:none;border:0;color:var(--muted);text-decoration:underline;font:600 .9rem var(--body);cursor:pointer;padding:0}
+
+.count{font-weight:700;color:var(--muted);margin:0 0 1rem}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.home{background:var(--card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.pic{position:relative;aspect-ratio:16/10}
+.pic svg{width:100%;height:100%;display:block}
+.tag{position:absolute;left:.8rem;top:.8rem;background:var(--sky);color:var(--ink);font-weight:800;font-size:.78rem;border-radius:999px;padding:.15rem .7rem}
+.heart{position:absolute;right:.7rem;top:.7rem;width:38px;height:38px;border-radius:50%;border:0;background:rgba(23,22,20,.75);cursor:pointer;display:grid;place-items:center}
+.heart svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2}
+.heart[aria-pressed="true"] svg{fill:#ff7a8a;stroke:#ff7a8a}
+.hb{padding:1.2rem 1.3rem 1.3rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+.price{font:400 1.5rem var(--display);color:var(--green)}
+.price small{font:500 .9rem var(--body);color:var(--muted)}
+.est{font-size:.82rem;color:var(--muted);margin:0}
+.hb h3{font-size:1.15rem}
+.loc{color:var(--muted);font-size:.92rem}
+.facts{display:flex;gap:1rem;font-weight:700;font-size:.92rem}
+.feats{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+.feats li{border:1px solid var(--line);border-radius:999px;padding:.05rem .65rem;font-size:.82rem;color:var(--muted)}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font:800 .97rem var(--body);text-decoration:none;text-align:center;border:2px solid var(--text);background:transparent;color:var(--text);cursor:pointer}
+.btn.main{background:var(--green);border-color:var(--green);color:var(--ink)}
+.btn.main:hover{background:#b0dd93}
+.btn:not(.main):hover{background:rgba(255,255,255,.1)}
+.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed}
+.hb .btn{margin-top:auto}
+.empty{grid-column:1/-1;border:2px dashed var(--line);border-radius:16px;padding:2rem;text-align:center;color:var(--muted)}
+.empty p{margin:0 auto 1rem}
+
+dialog{border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--text);padding:0;width:min(480px,92vw)}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+.dbox{padding:1.6rem}
+.dbox h2{font-size:1.5rem;margin-bottom:.3rem}
+.dbox .sub{color:var(--muted);margin-bottom:1.2rem;font-size:.95rem}
+.dbox label{display:block;font-weight:700;font-size:.88rem;margin-bottom:.9rem}
+.dbox input,.dbox textarea{display:block;width:100%;margin-top:.3rem;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:10px;background:var(--field);color:var(--text);font:500 .97rem var(--body)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.err{color:#ff9db0;font-weight:600;min-height:1.4em;margin:0 0 .5rem}
+.dbox .btn{width:100%}
+.close{float:right;background:none;border:0;color:var(--muted);font-size:1.6rem;line-height:1;cursor:pointer}
+.note{font-size:.84rem;color:var(--muted);margin:.8rem 0 0}
+
+.cta{background:var(--card);border-top:1px solid var(--line);text-align:center;padding:3.5rem 0}
+.cta h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.8rem}
+.cta p{margin:0 auto 1rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1.4rem}
+footer{padding:1.6rem 0 2.6rem;text-align:center;color:var(--muted);font-size:.9rem}
+
+@media (max-width:900px){.app{grid-template-columns:1fr}.filters{position:static}.list{grid-template-columns:1fr}}
+@media (min-width:901px) and (max-width:1020px){.list{grid-template-columns:1fr}}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">Makazi<b>.</b></a>
+    <button class="savedbtn" id="savedBtn" type="button" aria-pressed="false">Saved (0)</button>
+  </nav>
+
+  <header class="hero" id="top">
+    <h1>Find a home you’ll love.</h1>
+    <p>Search homes to rent or buy, save the ones you like and book a viewing in one message.</p>
+  </header>
+
+  <div class="app">
+    <aside class="filters" aria-label="Filters">
+      <div class="seg" role="group" aria-label="Rent or buy">
+        <button type="button" id="mRent" aria-pressed="true">Rent</button>
+        <button type="button" id="mBuy" aria-pressed="false">Buy</button>
+      </div>
+      <label>Town
+        <select id="town"><option>All</option><option>Nairobi</option><option>Kisumu</option><option>Mombasa</option><option>Nakuru</option><option>Eldoret</option></select>
+      </label>
+      <label>Property type
+        <select id="type"><option>All</option><option>Apartment</option><option>Bungalow</option><option>Maisonette</option><option>Bedsitter</option></select>
+      </label>
+      <div class="flabel">Bedrooms
+        <div class="beds" id="beds" role="group" aria-label="Minimum bedrooms"></div>
+      </div>
+      <div class="flabel">Maximum price
+        <input type="range" id="price" aria-label="Maximum price">
+        <span class="pl" id="pl"></span>
+      </div>
+      <label>Sort by
+        <select id="sort"><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+      </label>
+      <button class="reset" type="button" id="reset">Reset filters</button>
+    </aside>
+
+    <main>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="list" id="list"></div>
+    </main>
+  </div>
+</div>
+
+<dialog id="dlg" aria-labelledby="dTitle">
+  <div class="dbox">
+    <button class="close" type="button" id="dClose" aria-label="Close">×</button>
+    <h2 id="dTitle">Book a viewing</h2>
+    <p class="sub" id="dHome"></p>
+    <label>Full name<input id="name" autocomplete="name" placeholder="Your name"></label>
+    <div class="row">
+      <label>Phone number<input id="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx"></label>
+      <label>Viewing date (optional)<input id="vdate" type="date"></label>
+    </div>
+    <label>Message (optional)<textarea id="msg" rows="2" placeholder="Anything you want to ask?"></textarea></label>
+    <p class="err" id="err" role="alert"></p>
+    <a class="btn main" id="wa" href="#" aria-disabled="true" target="_blank" rel="noopener">Send enquiry on WhatsApp</a>
+    <p class="note">This is a demo site. Enquiries go to the developer’s WhatsApp. Homes and prices are examples.</p>
+  </div>
+</dialog>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Need a site like this?</h2>
+    <p>This property site is a demo I designed and built. I can build one for your agency, rentals or business, with search and enquiries that work.</p>
+    <div class="btns">
+      <a class="btn main" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20the%20property%20website%20you%20built%20and%20I%20need%20a%20website." target="_blank" rel="noopener">Hire Robert on WhatsApp</a>
+      <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=I%20need%20a%20website&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20the%20property%20website%20you%20built%20and%20I%20need%20a%20website.%0D%0A" target="_blank" rel="noopener">Send an email</a>
+      <a class="btn" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer>Makazi Homes is a demo website designed and built by Robert Bulemi Charles.</footer>
+
+<script>
+(function(){
+  var H=[
+    {id:1,title:"Sunny 2-bedroom apartment",town:"Nairobi",type:"Apartment",mode:"rent",price:55000,beds:2,baths:2,area:95,f:["Parking","Security","Balcony"]},
+    {id:2,title:"Family 4-bedroom maisonette",town:"Kisumu",type:"Maisonette",mode:"rent",price:85000,beds:4,baths:3,area:220,f:["Garden","Parking","Borehole water"]},
+    {id:3,title:"Compact bedsitter near town",town:"Nakuru",type:"Bedsitter",mode:"rent",price:8500,beds:0,baths:1,area:28,f:["Water included","Security"]},
+    {id:4,title:"3-bedroom bungalow with garden",town:"Eldoret",type:"Bungalow",mode:"buy",price:12500000,beds:3,baths:2,area:180,f:["Garden","Parking","Title deed"]},
+    {id:5,title:"Beachside 3-bedroom apartment",town:"Mombasa",type:"Apartment",mode:"buy",price:18900000,beds:3,baths:3,area:140,f:["Sea view","Pool","Security"]},
+    {id:6,title:"5-bedroom maisonette in a gated estate",town:"Nairobi",type:"Maisonette",mode:"buy",price:32000000,beds:5,baths:4,area:320,f:["Gated estate","Garden","Staff quarter"]},
+    {id:7,title:"1-bedroom apartment near the beach",town:"Mombasa",type:"Apartment",mode:"rent",price:28000,beds:1,baths:1,area:55,f:["Balcony","Wi-Fi ready","Security"]},
+    {id:8,title:"Quiet 3-bedroom bungalow",town:"Nakuru",type:"Bungalow",mode:"rent",price:45000,beds:3,baths:2,area:160,f:["Garden","Parking","Pets allowed"]}
+  ];
+  var CFG={rent:{min:5000,max:150000,step:5000},buy:{min:5000000,max:40000000,step:1000000}};
+  var st={mode:"rent",town:"All",type:"All",beds:0,max:150000,sort:"low",only:false,saved:[],cur:null,touched:false};
+  try{var s=JSON.parse(localStorage.getItem("makazi-saved")||"[]");if(Array.isArray(s))st.saved=s;}catch(e){}
+  var persist=function(){try{localStorage.setItem("makazi-saved",JSON.stringify(st.saved))}catch(e){}};
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n){return "KSh "+n.toLocaleString("en-KE")};
+  var monthly=function(p){var P=p*0.8,r=0.14/12,n=240;return Math.round(P*r/(1-Math.pow(1+r,-n)))};
+
+  function art(h,i){
+    var sk=["#2b3f57","#3a4a3a","#4a3b4f","#3d4a5c"],wl=["#e8dcc4","#cfd8c0","#dfc9b5","#c9d6e3"],rf=["#6b4a35","#4e5d45","#5a4350","#41546b"];
+    var w=wl[i%4],r=rf[i%4],win="#27384d";
+    var s='<svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="125" fill="'+sk[i%4]+'"/><circle cx="165" cy="26" r="12" fill="#f3e6b5"/><rect y="104" width="200" height="21" fill="#2f4a2f"/>';
+    if(h.type==="Apartment"){
+      s+='<rect x="64" y="22" width="72" height="84" fill="'+w+'"/>';
+      for(var y=0;y<4;y++)for(var x=0;x<3;x++)s+='<rect x="'+(72+x*20)+'" y="'+(30+y*18)+'" width="12" height="11" fill="'+win+'"/>';
+      s+='<rect x="92" y="90" width="16" height="16" fill="'+r+'"/>';
+    }else if(h.type==="Bungalow"){
+      s+='<rect x="45" y="64" width="110" height="42" fill="'+w+'"/><path d="M38 66L100 36L162 66z" fill="'+r+'"/><rect x="90" y="80" width="20" height="26" fill="'+r+'"/><rect x="58" y="76" width="22" height="16" fill="'+win+'"/><rect x="120" y="76" width="22" height="16" fill="'+win+'"/>';
+    }else if(h.type==="Maisonette"){
+      s+='<rect x="55" y="48" width="90" height="58" fill="'+w+'"/><path d="M48 50L100 22L152 50z" fill="'+r+'"/><rect x="66" y="58" width="18" height="14" fill="'+win+'"/><rect x="116" y="58" width="18" height="14" fill="'+win+'"/><rect x="66" y="82" width="18" height="14" fill="'+win+'"/><rect x="92" y="80" width="16" height="26" fill="'+r+'"/><rect x="116" y="82" width="18" height="14" fill="'+win+'"/>';
+    }else{
+      s+='<rect x="68" y="72" width="64" height="34" fill="'+w+'"/><rect x="64" y="68" width="72" height="6" fill="'+r+'"/><rect x="78" y="82" width="14" height="24" fill="'+r+'"/><rect x="102" y="82" width="20" height="14" fill="'+win+'"/>';
+    }
+    return s+'<rect x="22" y="86" width="5" height="20" fill="#5a3d2b"/><circle cx="24" cy="80" r="13" fill="#3f8a4f"/></svg>';
+  }
+
+  function drawBeds(){
+    $("beds").innerHTML=[0,1,2,3,4].map(function(n){return '<button type="button" class="chip" data-b="'+n+'" aria-pressed="'+(st.beds===n)+'">'+(n===0?"Any":n+"+")+'</button>'}).join("");
+  }
+  $("beds").addEventListener("click",function(e){var b=e.target.closest("[data-b]");if(!b)return;st.beds=+b.getAttribute("data-b");drawBeds();render();});
+
+  function setMode(m){
+    st.mode=m;var c=CFG[m],p=$("price");
+    p.min=c.min;p.max=c.max;p.step=c.step;p.value=c.max;st.max=c.max;
+    $("mRent").setAttribute("aria-pressed",m==="rent");$("mBuy").setAttribute("aria-pressed",m==="buy");
+    render();
+  }
+  $("mRent").onclick=function(){setMode("rent")};$("mBuy").onclick=function(){setMode("buy")};
+  $("town").onchange=function(){st.town=this.value;render()};
+  $("type").onchange=function(){st.type=this.value;render()};
+  $("sort").onchange=function(){st.sort=this.value;render()};
+  $("price").oninput=function(){st.max=+this.value;render()};
+  $("reset").onclick=function(){st.town="All";st.type="All";st.beds=0;st.only=false;$("town").value="All";$("type").value="All";drawBeds();setMode(st.mode);};
+  $("savedBtn").onclick=function(){st.only=!st.only;render()};
+
+  var heart='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.5 2.8 5 6.2 5c2 0 3.4 1.1 4.2 2.4h3.2C14.4 6.1 15.8 5 17.8 5c3.4 0 5.3 3.5 3.8 6.8C19.5 16.4 12 21 12 21z"/></svg>';
+  function render(){
+    var rent=st.mode==="rent";
+    $("pl").textContent="Up to "+fmt(st.max)+(rent?" per month":"");
+    $("savedBtn").textContent="Saved ("+st.saved.length+")";
+    $("savedBtn").setAttribute("aria-pressed",st.only);
+    var res=H.filter(function(h){
+      return h.mode===st.mode&&(st.town==="All"||h.town===st.town)&&(st.type==="All"||h.type===st.type)&&h.beds>=st.beds&&h.price<=st.max&&(!st.only||st.saved.indexOf(h.id)>-1);
+    }).sort(function(a,b){return st.sort==="low"?a.price-b.price:b.price-a.price});
+    $("count").textContent=res.length+(res.length===1?" home":" homes")+(rent?" for rent":" for sale")+(st.only?" in your saved list":"");
+    if(!res.length){
+      $("list").innerHTML='<div class="empty"><p>'+(st.only?"You have not saved any homes here yet.":"No homes match these filters.")+'</p><button class="btn" type="button" id="clr">Reset filters</button></div>';
+      $("clr").onclick=$("reset").onclick;return;
+    }
+    $("list").innerHTML=res.map(function(h){
+      var sv=st.saved.indexOf(h.id)>-1;
+      return '<article class="home"><div class="pic">'+art(h,h.id)+'<span class="tag">'+(rent?"For rent":"For sale")+'</span><button class="heart" type="button" data-s="'+h.id+'" aria-pressed="'+sv+'" aria-label="'+(sv?"Remove from saved":"Save this home")+'">'+heart+'</button></div>'+
+        '<div class="hb"><div class="price">'+fmt(h.price)+(rent?' <small>per month</small>':'')+'</div>'+
+        (rent?'':'<p class="est">About '+fmt(monthly(h.price))+' per month with 20% deposit, 14% interest over 20 years (estimate)</p>')+
+        '<h3>'+h.title+'</h3><div class="loc">'+h.type+' · '+h.town+'</div>'+
+        '<div class="facts"><span>'+(h.beds===0?"Studio":h.beds+" bed")+'</span><span>'+h.baths+' bath</span><span>'+h.area+' m²</span></div>'+
+        '<ul class="feats">'+h.f.map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul>'+
+        '<button class="btn main" type="button" data-e="'+h.id+'">Book a viewing</button></div></article>';
+    }).join("");
+  }
+  $("list").addEventListener("click",function(e){
+    var s=e.target.closest("[data-s]"),b=e.target.closest("[data-e]");
+    if(s){var id=+s.getAttribute("data-s"),i=st.saved.indexOf(id);if(i>-1)st.saved.splice(i,1);else st.saved.push(id);persist();render();}
+    if(b){openDlg(+b.getAttribute("data-e"));}
+  });
+
+  var dlg=$("dlg");
+  function openDlg(id){
+    st.cur=H.filter(function(h){return h.id===id})[0];st.touched=false;
+    var h=st.cur,t=new Date();t.setDate(t.getDate()+1);
+    $("vdate").min=t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");
+    $("dHome").textContent=h.title+", "+h.town+" · "+fmt(h.price)+(h.mode==="rent"?" per month":"");
+    upd();dlg.showModal();
+  }
+  function upd(){
+    var h=st.cur,err="";
+    if(!$("name").value.trim())err="Please enter your name.";
+    else if($("phone").value.replace(/\D/g,"").length<9)err="Please enter a valid phone number.";
+    $("err").textContent=st.touched?err:"";
+    var wa=$("wa");
+    if(err){wa.setAttribute("aria-disabled","true");wa.href="#";}
+    else{
+      var m=["Hello Makazi Homes, I would like to book a viewing.","","Home: "+h.title,"Town: "+h.town,"Price: "+fmt(h.price)+(h.mode==="rent"?" per month":""),"Name: "+$("name").value.trim(),"Phone: "+$("phone").value.trim()];
+      if($("vdate").value)m.push("Preferred viewing date: "+$("vdate").value);
+      if($("msg").value.trim())m.push("Message: "+$("msg").value.trim());
+      wa.setAttribute("aria-disabled","false");
+      wa.href="https://wa.me/254715498648?text="+encodeURIComponent(m.join("\n"));
+    }
+  }
+  ["name","phone","vdate","msg"].forEach(function(id){$(id).addEventListener("input",function(){st.touched=true;upd()});});
+  $("wa").addEventListener("click",function(e){if(this.getAttribute("aria-disabled")==="true"){e.preventDefault();st.touched=true;upd();}});
+  $("dClose").onclick=function(){dlg.close()};
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+
+  drawBeds();setMode("rent");
+})();
+</script>
+<a href="../" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#111;color:#fff;font:700 14px system-ui,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3)">← Portfolio</a>
+</body>
+</html>

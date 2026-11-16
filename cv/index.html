@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robert Bulemi Charles | CV</title>
+<meta name="description" content="Online CV of Robert Bulemi Charles, full-stack software developer and content creator.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0f1222; --surface:#171b33; --line:#2a3058; --text:#eceefb; --muted:#9ba2c9;
+  --code:#6ea8ff; --lens:#ff8aa8;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.02rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--code);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+h2{font-size:1.7rem;margin-bottom:1.4rem}
+p{max-width:64ch;margin:0 0 1rem}
+
+header{padding:3rem 0 2.5rem;border-bottom:1px solid var(--line)}
+header h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:800}
+.role{font-size:1.2rem;color:var(--muted);margin:.7rem 0 1.6rem}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{display:inline-block;padding:.75rem 1.3rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--line);font-size:.97rem;transition:background .15s,border-color .15s}
+.btn.main{background:var(--code);border-color:var(--code);color:#0b1020}
+.btn.main:hover{background:#8dbbff}
+.btn:not(.main):hover{border-color:var(--text)}
+.back{display:inline-block;margin-bottom:1.6rem;color:var(--muted);text-decoration:none;font-size:.95rem}
+
+.layout{display:grid;grid-template-columns:1.6fr 1fr;gap:3.5rem;padding:3rem 0 4rem}
+.layout section{margin-bottom:3rem}
+
+.tl{border-left:2px solid var(--line);margin-left:.4rem;padding-left:1.6rem}
+.job,.edu{position:relative;margin-bottom:2rem}
+.job::before,.edu::before{content:"";position:absolute;left:calc(-1.6rem - 6.5px);top:.5rem;width:11px;height:11px;border-radius:50%;background:var(--code)}
+.edu::before{background:var(--lens)}
+.job h3,.edu h3{font-size:1.25rem}
+.where{color:var(--muted);margin:.15rem 0 .6rem;font-size:.97rem}
+.where b{color:var(--text);font-weight:500}
+ul.pts{margin:0;padding-left:1.1rem}
+ul.pts li{margin-bottom:.35rem;max-width:62ch}
+.edu p{color:var(--muted);font-size:.97rem;margin:0}
+
+.side .group{background:var(--surface);border-radius:10px;padding:1.3rem 1.4rem;margin-bottom:1rem}
+.side h3{font-size:1.05rem;margin-bottom:.7rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:0;padding:0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:.2rem .75rem;font-size:.9rem}
+.group.create{border-top:4px solid var(--lens)}
+.group.dev{border-top:4px solid var(--code)}
+.ref{color:var(--muted)}
+footer{padding:1.5rem 0 2.5rem;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+
+@media (max-width:780px){.layout{grid-template-columns:1fr;gap:1rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="#top" id="top">Robert’s online CV</a>
+    <h1>Robert Bulemi Charles</h1>
+    <p class="role">Full-stack software developer and content creator</p>
+    <div class="btns">
+      <a class="btn main" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20your%20CV%20and%20I%20would%20like%20to%20talk%20to%20you." target="_blank" rel="noopener">WhatsApp me</a>
+      <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=Opportunity%20for%20Robert%20Bulemi%20Charles&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20your%20CV%20and%20I%20would%20like%20to%20talk%20to%20you.%0D%0A" target="_blank" rel="noopener">Send an email</a>
+      <a class="btn" href="tel:+254715498648">+254 715 498 648</a>
+      <a class="btn" href="Robert-Bulemi-CV.pdf" download>Download PDF</a>
+      <a class="btn" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main>
+      <section>
+        <h2>Summary</h2>
+        <p>Full-stack developer studying Applied Computer Technology, with hands-on experience building responsive, user-focused web applications with React, Node.js and MongoDB, and cloud tools such as Firebase and AWS.</p>
+        <p>I also design graphics, shoot and edit video and photos, and manage social media, so I can take a project from code to design to content.</p>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <div class="tl">
+          <div class="job">
+            <h3>Graphic Designer</h3>
+            <p class="where"><b>INKD</b> · Present</p>
+            <ul class="pts">
+              <li>Design logos, marketing materials and brand elements that stay consistent across platforms.</li>
+              <li>Create graphics for social media, websites and digital campaigns.</li>
+              <li>Work with other teams on concepts and creative direction, following brand guidelines.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Freelance Full-Stack Developer</h3>
+            <p class="where"><b>Self-employed</b> · 2023 – Present</p>
+            <ul class="pts">
+              <li>Build custom, responsive websites and web applications for clients using React, Node.js and MongoDB.</li>
+              <li>Develop REST APIs and connect third-party services such as payments, cloud storage and analytics.</li>
+              <li>Gather requirements with clients, deliver on time, and provide maintenance and support after launch.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Freelance Social Media Manager and Content Creator</h3>
+            <p class="where"><b>Various clients</b> · 2022 – Present</p>
+            <ul class="pts">
+              <li>Plan and publish content for personal projects and small brands on Instagram, TikTok and Facebook.</li>
+              <li>Create graphics and short videos with Canva and CapCut, and manage content calendars.</li>
+              <li>Track engagement such as likes, reach and views to see what works.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Videographer and Photographer</h3>
+            <p class="where"><b>City Walk</b> · January 2022 – April 2022</p>
+            <ul class="pts">
+              <li>Filmed and photographed events, products and promotions for marketing.</li>
+              <li>Edited video for campaigns and handled post-production and delivery.</li>
+              <li>Worked with the marketing team on the visual content strategy.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <div class="tl">
+          <div class="edu">
+            <h3>Bachelor of Applied Computer Technology</h3>
+            <p class="where"><b>United States International University – Africa</b> · September 2022 – 2027 (expected)</p>
+            <p>Software development, systems analysis and emerging technologies. Coursework includes data structures and algorithms, database management systems, software engineering and web development.</p>
+          </div>
+          <div class="edu">
+            <h3>Diploma in Business and Information Technology</h3>
+            <p class="where"><b>St. Paul’s University, Limuru</b> · January 2019 – May 2020</p>
+            <p>Business management, database systems, web development and IT project management.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="side">
+      <h2>Skills</h2>
+      <div class="group dev">
+        <h3>Frontend</h3>
+        <ul class="chips"><li>React</li><li>Vue.js</li><li>JavaScript</li><li>TypeScript</li><li>HTML5</li><li>CSS3</li><li>SASS</li><li>Tailwind CSS</li><li>Bootstrap</li></ul>
+      </div>
+      <div class="group dev">
+        <h3>Backend</h3>
+        <ul class="chips"><li>Java</li><li>Node.js</li><li>Python</li><li>Express.js</li><li>Django</li><li>REST APIs</li><li>GraphQL</li><li>Microservices</li></ul>
+      </div>
+      <div class="group dev">
+        <h3>Databases</h3>
+        <ul class="chips"><li>MongoDB</li><li>PostgreSQL</li><li>MySQL</li><li>Redis</li><li>Firebase</li></ul>
+      </div>
+      <div class="group dev">
+        <h3>Tools</h3>
+        <ul class="chips"><li>Git</li><li>Docker</li><li>AWS</li><li>Vercel</li><li>Netlify</li><li>Jenkins</li><li>Figma</li><li>Postman</li></ul>
+      </div>
+      <div class="group create">
+        <h3>Creative</h3>
+        <ul class="chips"><li>Photoshop</li><li>Illustrator</li><li>Premiere Pro</li><li>DaVinci Resolve</li><li>Final Cut Pro</li><li>After Effects</li><li>Canva</li><li>Photography</li><li>Video editing</li><li>Social media strategy</li><li>Copywriting</li></ul>
+      </div>
+      <div class="group">
+        <h3>Referees</h3>
+        <p class="ref" style="margin:0">Available on request.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>© 2026 Robert Bulemi Charles</footer>
+</div>
+<a href="../" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#111;color:#fff;font:700 14px system-ui,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3)">← Portfolio</a>
+</body>
+</html>

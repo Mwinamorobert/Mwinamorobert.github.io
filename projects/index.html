@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robert Bulemi Charles | Projects</title>
+<meta name="description" content="Software projects by Robert Bulemi Charles: SmartMeal and AI Inventory System.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0f1222; --surface:#171b33; --line:#2a3058; --text:#eceefb; --muted:#9ba2c9;
+  --code:#6ea8ff; --lens:#ff8aa8;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.02rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--code);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+p{max-width:62ch;margin:0 0 1rem}
+
+header{padding:3rem 0 2rem}
+header h1{font-size:clamp(2.6rem,8vw,4.6rem);font-weight:800}
+header h1 span{display:block;color:var(--muted);font-weight:500}
+.lead{font-size:1.15rem;color:var(--muted);margin:1.3rem 0 0}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;padding:1.5rem 0 3rem}
+.card{background:var(--surface);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.shot{aspect-ratio:16/10;background:linear-gradient(135deg,#1d2347,#10142b);padding:1rem;display:flex;align-items:stretch}
+.win{flex:1;border:1px solid var(--line);border-radius:8px;background:#0f1222;display:flex;flex-direction:column}
+.bar{display:flex;gap:.35rem;padding:.55rem .7rem;border-bottom:1px solid var(--line)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.win .body{flex:1;display:grid;place-content:center;text-align:center;padding:1rem}
+.win .body b{font:800 clamp(1.5rem,4vw,2.2rem) var(--display)}
+.win .body small{color:var(--muted)}
+.card.meal .win .body b{color:var(--lens)}
+.card.inv .win .body b{color:var(--code)}
+.info{padding:1.5rem 1.5rem 1.7rem;display:flex;flex-direction:column;gap:.9rem;flex:1}
+.info h2{font-size:1.6rem}
+.info p{margin:0;color:var(--muted)}
+ul.pts{margin:0;padding-left:1.1rem}
+ul.pts li{margin-bottom:.3rem;font-size:.97rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;margin:auto 0 0;padding:0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:.2rem .75rem;font-size:.9rem}
+
+.more{background:var(--surface);border-radius:14px;padding:2.4rem 1.6rem;text-align:center;margin-bottom:3rem}
+.more h2{font-size:1.8rem;margin-bottom:.7rem}
+.more p{margin:0 auto 1.4rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--line);transition:background .15s,border-color .15s}
+.btn.main{background:var(--code);border-color:var(--code);color:#0b1020}
+.btn.main:hover{background:#8dbbff}
+.btn:not(.main):hover{border-color:var(--text)}
+footer{padding:1.5rem 0 2.5rem;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (max-width:780px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Projects <span>by Robert Bulemi Charles</span></h1>
+    <p class="lead">Two full applications I’ve built, one with React and Node.js and one with Python and Django. Both handle real data, user accounts and dashboards.</p>
+  </header>
+
+  <main class="grid">
+    <article class="card meal">
+      <div class="shot" role="img" aria-label="SmartMeal preview">
+        <div class="win"><div class="bar"><i></i><i></i><i></i></div><div class="body"><b>SmartMeal</b><small>Screenshot coming soon</small></div></div>
+      </div>
+      <div class="info">
+        <h2>SmartMeal</h2>
+        <p>A meal planning web app that helps people eat well on a budget, with prices shown in Kenyan shillings.</p>
+        <ul class="pts">
+          <li>Browse recipes with price, difficulty, prep time and cook time.</li>
+          <li>Build meal plans and see the total cost.</li>
+          <li>Create shopping lists and save favorite recipes.</li>
+          <li>Track a weekly budget and set dietary preferences.</li>
+        </ul>
+        <ul class="chips"><li>React</li><li>TypeScript</li><li>Node.js</li><li>Express</li><li>Tailwind CSS</li><li>PostgreSQL</li></ul>
+      </div>
+    </article>
+
+    <article class="card inv">
+      <div class="shot" role="img" aria-label="AI Inventory System preview">
+        <div class="win"><div class="bar"><i></i><i></i><i></i></div><div class="body"><b>AI Inventory</b><small>Screenshot coming soon</small></div></div>
+      </div>
+      <div class="info">
+        <h2>AI Inventory System</h2>
+        <p>A stock management app for small businesses, with insights that help spot trends and unusual stock levels.</p>
+        <ul class="pts">
+          <li>User login, with each person managing their own stock.</li>
+          <li>Add, edit and delete items, suppliers and locations.</li>
+          <li>Export inventory to a file.</li>
+          <li>Insights charts, plus machine learning code for demand forecasting and unusual stock detection.</li>
+        </ul>
+        <ul class="chips"><li>Python</li><li>Django</li><li>scikit-learn</li><li>pandas</li><li>Plotly</li><li>Bootstrap</li></ul>
+      </div>
+    </article>
+  </main>
+
+  <section class="more">
+    <h2>Want to see the code?</h2>
+    <p>My projects and code are on GitHub. Message me if you would like a walkthrough.</p>
+    <div class="btns">
+      <a class="btn main" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">See my GitHub</a>
+      <a class="btn" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20your%20projects%20and%20I%20would%20like%20to%20talk%20to%20you." target="_blank" rel="noopener">WhatsApp me</a>
+      <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=About%20your%20projects&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20your%20projects%20and%20I%20would%20like%20to%20talk%20to%20you.%0D%0A" target="_blank" rel="noopener">Send an email</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Robert Bulemi Charles</footer>
+</div>
+<a href="../" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#111;color:#fff;font:700 14px system-ui,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3)">← Portfolio</a>
+</body>
+</html>

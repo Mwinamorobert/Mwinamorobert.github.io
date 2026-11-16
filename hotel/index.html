@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jua Lakeside Hotel | Demo website by Robert Bulemi Charles</title>
+<meta name="description" content="Jua Lakeside Hotel: rooms, amenities and an online booking request form. A demo website built by Robert Bulemi Charles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#06181b; --surface:#0b2a2e; --line:#1b4549; --text:#eaf1ee; --muted:#9fbab6;
+  --gold:#e9b44c; --ink:#0a2224; --paper:#0e3236; --paper-text:#eaf1ee; --paper-line:#235056; --field:#07201f;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:.8rem}
+p{max-width:60ch;margin:0 0 1rem}
+section{padding:4.5rem 0}
+.sub{color:var(--muted);margin-bottom:2.2rem}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;position:relative;z-index:2}
+.logo{font:700 1.35rem var(--display);text-decoration:none}
+nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;font-weight:500}
+nav ul a{text-decoration:none;color:var(--text)}
+nav ul a:hover{color:var(--gold)}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(#06181b,#06181b)}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;padding-bottom:7rem}
+.hero h1{font-size:clamp(3rem,9vw,6rem);margin:4.5rem 0 1.2rem;max-width:12ch}
+.hero p{font-size:1.25rem;color:#e6efe9;max-width:44ch}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.btn{display:inline-block;padding:.9rem 1.6rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--text);font-family:inherit;font-size:1rem;cursor:pointer;background:transparent;color:var(--text)}
+.btn.main{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.btn.main:hover{background:#f2c76e}
+.btn:not(.main):hover{background:rgba(255,255,255,.1)}
+
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.room{background:var(--surface);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.rimg{aspect-ratio:16/10}
+.rimg svg{width:100%;height:100%;display:block}
+.rinfo{padding:1.4rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.room h3{font-size:1.45rem}
+.price{font-size:1.15rem;font-weight:700;color:var(--gold)}
+.price small{color:var(--muted);font-weight:400}
+.room p{color:var(--muted);margin:0;font-size:.98rem}
+.room ul{margin:0;padding-left:1.1rem;font-size:.95rem}
+.room .btn{margin-top:auto;text-align:center;border-color:var(--gold);color:var(--gold)}
+.room .btn:hover{background:var(--gold);color:var(--ink)}
+
+.band{background:var(--surface)}
+.amen{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem 2rem}
+.amen div{border-top:2px solid var(--gold);padding-top:.8rem}
+.amen b{display:block;font:700 1.25rem var(--display);margin-bottom:.2rem}
+.amen span{color:var(--muted);font-size:.97rem}
+
+.book{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:start}
+.panel{background:var(--paper);color:var(--paper-text);border:1px solid var(--line);border-radius:14px;padding:1.8rem}
+.panel h3{font-size:1.5rem;margin-bottom:1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{display:block;font-weight:700;font-size:.92rem;margin-bottom:.9rem}
+input,select,textarea{display:block;width:100%;margin-top:.3rem;padding:.7rem .8rem;border:1.5px solid var(--paper-line);border-radius:8px;font:400 1rem var(--body);background:var(--field);color:var(--paper-text)}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.chk{display:flex;align-items:center;gap:.6rem;font-weight:500;margin-bottom:.6rem}
+.chk input{width:auto;margin:0;accent-color:#e9b44c;width:1.1rem;height:1.1rem}
+.sum dl{margin:0}
+.sum .line{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--paper-line)}
+.sum .total{font:700 1.5rem var(--display);border-bottom:0;padding-top:1rem}
+.err{color:#ff9b9b;font-weight:500;min-height:1.5em;margin:.8rem 0 0}
+.panel .btn{width:100%;text-align:center;margin-top:1rem;background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.panel .btn:hover{background:#f2c76e}
+.panel .btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
+.note{font-size:.88rem;color:var(--muted);margin:.9rem 0 0}
+
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gal figure{margin:0;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.gal svg{display:block;width:100%;height:auto}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1rem .7rem;font:700 1.05rem var(--display);background:linear-gradient(transparent,rgba(6,24,27,.9))}
+.cta{text-align:center}
+.cta p{margin:0 auto 1rem;color:var(--muted)}
+.cta .btns{justify-content:center}
+footer{padding:1.6rem 0 2.6rem;text-align:center;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line)}
+
+@media (max-width:860px){
+  .rooms,.amen{grid-template-columns:1fr}
+  .book{grid-template-columns:1fr}
+  nav ul{display:none}
+  section{padding:3.2rem 0}
+}
+@media (max-width:860px){.gal{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.gal{grid-template-columns:1fr}}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <svg viewBox="0 0 1200 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06181b"/><stop offset=".55" stop-color="#2d6b66"/><stop offset=".85" stop-color="#e9b44c"/></linearGradient>
+      <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0a94c"/><stop offset=".25" stop-color="#2d6b66"/><stop offset="1" stop-color="#06181b"/></linearGradient>
+    </defs>
+    <rect width="1200" height="400" fill="url(#sky)"/>
+    <circle cx="820" cy="360" r="62" fill="#fbe3a6" opacity=".95"/>
+    <path d="M0 400 L130 330 L260 380 L420 300 L560 375 L700 335 L860 385 L1040 310 L1200 370 L1200 420 L0 420Z" fill="#14494d" opacity=".9"/>
+    <path d="M0 420 L180 380 L330 410 L520 370 L720 410 L900 385 L1200 415 L1200 430 L0 430Z" fill="#0d3a3e"/>
+    <rect y="415" width="1200" height="145" fill="url(#lake)"/>
+    <g stroke="#fbe3a6" stroke-width="3" stroke-linecap="round" opacity=".7"><path d="M770 440h100"/><path d="M790 458h60"/><path d="M805 476h30"/></g>
+    <g fill="none" stroke="#0a2224" stroke-width="3" stroke-linecap="round" opacity=".6"><path d="M240 150q12-14 24 0q12-14 24 0"/><path d="M330 110q10-12 20 0q10-12 20 0"/><path d="M170 100q8-10 16 0q8-10 16 0"/></g>
+  </svg>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top">Jua Lakeside</a>
+      <ul><li><a href="#rooms">Rooms</a></li><li><a href="#stay">Your stay</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#book">Book</a></li></ul>
+    </nav>
+    <h1>Wake up to the lake.</h1>
+    <p>Comfortable rooms, good food and quiet evenings by the water in western Kenya.</p>
+    <div class="btns">
+      <a class="btn main" href="#book">Book a room</a>
+      <a class="btn" href="#rooms">See rooms</a>
+    </div>
+  </div>
+</div>
+
+<section id="rooms">
+  <div class="wrap">
+    <h2>Rooms for every stay</h2>
+    <p class="sub">Pick a room, then check the exact price in the booking form below.</p>
+    <div class="rooms" id="roomList"></div>
+  </div>
+</section>
+
+<section class="band" id="stay">
+  <div class="wrap">
+    <h2>Everything for a good stay</h2>
+    <p class="sub">The things guests ask about most, included or easy to add.</p>
+    <div class="amen">
+      <div><b>Lakeside restaurant</b><span>Breakfast, lunch and dinner with local and international dishes.</span></div>
+      <div><b>Swimming pool</b><span>Open every day, with loungers and a poolside bar.</span></div>
+      <div><b>Fast Wi-Fi</b><span>Free in every room and in the lobby.</span></div>
+      <div><b>Conference room</b><span>Seats up to 40 people, with a projector and tea service.</span></div>
+      <div><b>Airport pickup</b><span>We meet you on arrival and take you to the hotel.</span></div>
+      <div><b>Boat rides</b><span>Short guided trips on the lake at sunrise and sunset.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <h2>Around the hotel</h2>
+    <p class="sub">Illustrated scenes of the lake, the pool and the evenings here.</p>
+    <div class="gal">
+      <figure><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="#1d5a5a"/><rect width="200" height="80" fill="#e9b44c" opacity=".55"/><circle cx="120" cy="70" r="26" fill="#fbe3a6"/><rect y="80" width="200" height="70" fill="#0c3a3e"/><path d="M60 98h70l-12 12H72z" fill="#0a2224"/><path d="M95 98V66l22 32z" fill="#f6efe2"/><path d="M95 98V72l-18 26z" fill="#e9b44c"/><path d="M70 122h60M85 132h30" stroke="#fbe3a6" stroke-width="3" stroke-linecap="round" opacity=".5"/></svg><figcaption>Sunset boat ride</figcaption></figure>
+      <figure><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="#14494d"/><rect x="30" y="40" width="140" height="70" rx="10" fill="#3fb0b8"/><rect x="38" y="48" width="124" height="54" rx="6" fill="#62c9d0"/><path d="M50 60q15-8 30 0t30 0t30 0" fill="none" stroke="#e8fbfb" stroke-width="3" opacity=".7"/><path d="M60 80q15-8 30 0t30 0" fill="none" stroke="#e8fbfb" stroke-width="3" opacity=".5"/><rect x="40" y="122" width="40" height="8" rx="3" fill="#e9b44c"/><rect x="120" y="122" width="40" height="8" rx="3" fill="#e9b44c"/></svg><figcaption>The pool</figcaption></figure>
+      <figure><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="#0b2b2f"/><circle cx="100" cy="32" r="14" fill="#fbe3a6"/><path d="M100 0v18" stroke="#e9b44c" stroke-width="2"/><ellipse cx="100" cy="100" rx="70" ry="14" fill="#7a5a1d"/><rect x="96" y="108" width="8" height="34" fill="#7a5a1d"/><ellipse cx="70" cy="94" rx="18" ry="6" fill="#f6efe2"/><ellipse cx="130" cy="94" rx="18" ry="6" fill="#f6efe2"/><circle cx="70" cy="92" r="5" fill="#e9b44c"/><circle cx="130" cy="92" r="5" fill="#3f8a63"/></svg><figcaption>Dinner by lantern</figcaption></figure>
+      <figure><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="#1d5a5a"/><circle cx="160" cy="34" r="16" fill="#fbe3a6"/><rect y="104" width="200" height="46" fill="#17503f"/><path d="M60 150l30-46h20l30 46z" fill="#d9cdb6" opacity=".55"/><path d="M40 104V60" stroke="#7a5a1d" stroke-width="6"/><path d="M40 60q-26-4-34 14M40 60q26-4 34 14M40 60q-18-18-30-10M40 60q18-18 30-10M40 60v-26" stroke="#3f8a63" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M170 104V74" stroke="#7a5a1d" stroke-width="5"/><path d="M170 74q-16-2-22 10M170 74q16-2 22 10M170 74v-20" stroke="#3f8a63" stroke-width="5" fill="none" stroke-linecap="round"/></svg><figcaption>Garden walk</figcaption></figure>
+      <figure><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="#0b2b2f"/><path d="M70 150V70q30-40 60 0v80z" fill="#e9b44c"/><path d="M82 150V74q18-26 36 0v76z" fill="#0a2224"/><rect y="132" width="200" height="18" fill="#123e43"/><circle cx="40" cy="60" r="10" fill="#fbe3a6"/><path d="M40 0v50" stroke="#e9b44c"/><circle cx="160" cy="60" r="10" fill="#fbe3a6"/><path d="M160 0v50" stroke="#e9b44c"/></svg><figcaption>The lobby</figcaption></figure>
+      <figure><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="#04100f"/><g fill="#f6efe2"><circle cx="30" cy="22" r="1.5"/><circle cx="80" cy="14" r="1.5"/><circle cx="130" cy="30" r="1.5"/><circle cx="170" cy="16" r="1.5"/><circle cx="55" cy="46" r="1"/><circle cx="150" cy="52" r="1"/></g><circle cx="165" cy="40" r="10" fill="#fbe3a6"/><rect x="40" y="70" width="120" height="60" fill="#0f3d42"/><rect x="30" y="64" width="140" height="8" fill="#14494d"/><g fill="#e9b44c"><rect x="52" y="82" width="12" height="14"/><rect x="76" y="82" width="12" height="14"/><rect x="112" y="82" width="12" height="14" opacity=".4"/><rect x="136" y="82" width="12" height="14"/><rect x="52" y="104" width="12" height="14" opacity=".4"/><rect x="76" y="104" width="12" height="14"/><rect x="136" y="104" width="12" height="14"/></g><rect y="130" width="200" height="20" fill="#06181b"/></svg><figcaption>Evenings at Jua</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <h2>Request a booking</h2>
+    <p class="sub">Choose your dates and room. The price updates as you go, and your request opens in WhatsApp ready to send.</p>
+    <div class="book">
+      <div class="panel">
+        <h3>Your details</h3>
+        <div class="row">
+          <label>Full name<input id="name" autocomplete="name" placeholder="Your name"></label>
+          <label>Phone number<input id="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx"></label>
+        </div>
+        <label>Room
+          <select id="room"></select>
+        </label>
+        <div class="row">
+          <label>Check-in<input id="cin" type="date"></label>
+          <label>Check-out<input id="cout" type="date"></label>
+        </div>
+        <label>Number of guests<input id="guests" type="number" min="1" value="2"></label>
+        <label class="chk"><input id="bf" type="checkbox">Add breakfast (KSh 900 per guest per night)</label>
+        <label class="chk"><input id="pickup" type="checkbox">Add airport pickup (KSh 3,000)</label>
+        <label>Anything we should know? (optional)<textarea id="notes" rows="2"></textarea></label>
+      </div>
+      <div class="panel sum">
+        <h3>Your price</h3>
+        <dl id="sum"></dl>
+        <p class="err" id="err" role="alert"></p>
+        <a class="btn" id="wa" href="#book" aria-disabled="true" target="_blank" rel="noopener">Send request on WhatsApp</a>
+        <p class="note">This is a demo site. Requests go to the developer’s WhatsApp. Prices and rooms are examples.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band cta">
+  <div class="wrap">
+    <h2>Need a website like this?</h2>
+    <p>This hotel is a demo I designed and built. I can make one for your hotel, business or event, with online booking that works.</p>
+    <div class="btns">
+      <a class="btn main" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20the%20hotel%20website%20you%20built%20and%20I%20need%20a%20website." target="_blank" rel="noopener">Hire Robert on WhatsApp</a>
+      <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=I%20need%20a%20website&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20the%20hotel%20website%20you%20built%20and%20I%20need%20a%20website.%0D%0A" target="_blank" rel="noopener">Send an email</a>
+      <a class="btn" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>Jua Lakeside Hotel is a demo website designed and built by Robert Bulemi Charles.</footer>
+
+<script>
+(function(){
+  var rooms=[
+    {id:"standard",name:"Standard Room",price:6500,cap:2,lake:false,desc:"Quiet and comfortable, ideal for solo travelers and couples.",feats:["Queen bed","Garden view","Free Wi-Fi","Private bathroom"]},
+    {id:"deluxe",name:"Deluxe Lake View",price:9500,cap:3,lake:true,desc:"A bigger room with a balcony that looks straight onto the water.",feats:["King bed","Private balcony","Lake view","Work desk"]},
+    {id:"suite",name:"Family Suite",price:14000,cap:5,lake:true,desc:"Two bedrooms and a living area, made for families and small groups.",feats:["Two bedrooms","Living area","Lake view","Kitchenette"]}
+  ];
+  var BF=900,PICK=3000,touched=false;
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n){return "KSh "+n.toLocaleString("en-KE")};
+  var iso=function(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+
+  function art(lake,i){
+    var tint=["#1a5256","#25605c","#2e6b66"][i];
+    var win=lake?'<rect x="120" y="22" width="56" height="44" rx="3" fill="#0a2224"/><rect x="123" y="25" width="50" height="22" fill="#e9b44c"/><rect x="123" y="47" width="50" height="16" fill="#2d6b66"/><circle cx="150" cy="38" r="7" fill="#fbe3a6"/>':'<rect x="120" y="22" width="56" height="44" rx="3" fill="#0a2224"/><rect x="123" y="25" width="50" height="38" fill="#3f8a63"/>';
+    return '<svg viewBox="0 0 200 125" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="200" height="125" fill="'+tint+'"/><rect y="88" width="200" height="37" fill="#06181b" opacity=".6"/>'+win+'<rect x="22" y="52" width="86" height="12" rx="3" fill="#f6efe2"/><rect x="18" y="64" width="94" height="26" rx="4" fill="#e9b44c"/><rect x="18" y="86" width="94" height="8" rx="2" fill="#7a5a1d"/><rect x="26" y="56" width="26" height="10" rx="4" fill="#fff"/><rect x="58" y="56" width="26" height="10" rx="4" fill="#fff"/></svg>';
+  }
+
+  var list=$("roomList"), sel=$("room");
+  rooms.forEach(function(r,i){
+    var a=document.createElement("article");a.className="room";
+    a.innerHTML='<div class="rimg">'+art(r.lake,i)+'</div><div class="rinfo"><h3>'+r.name+'</h3><div class="price">'+fmt(r.price)+' <small>per night</small></div><p>'+r.desc+'</p><ul>'+r.feats.map(function(f){return "<li>"+f+"</li>"}).join("")+'</ul><button class="btn" type="button" data-room="'+r.id+'">Book this room</button></div>';
+    list.appendChild(a);
+    var o=document.createElement("option");o.value=r.id;o.textContent=r.name+" ("+fmt(r.price)+" per night, up to "+r.cap+" guests)";sel.appendChild(o);
+  });
+  list.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-room]");if(!b)return;
+    sel.value=b.getAttribute("data-room");update();
+    $("book").scrollIntoView({behavior:"smooth"});
+  });
+
+  var today=new Date(),d1=new Date(today),d2=new Date(today);
+  d1.setDate(d1.getDate()+1);d2.setDate(d2.getDate()+3);
+  $("cin").min=iso(today);$("cout").min=iso(d1);
+  $("cin").value=iso(d1);$("cout").value=iso(d2);
+
+  function update(){
+    var r=rooms.filter(function(x){return x.id===sel.value})[0];
+    var cin=$("cin").value,cout=$("cout").value,g=parseInt($("guests").value,10);
+    var nights=(cin&&cout)?Math.round((new Date(cout)-new Date(cin))/864e5):0;
+    var err="";
+    if(!$("name").value.trim())err="Please enter your name.";
+    else if($("phone").value.replace(/\D/g,"").length<9)err="Please enter a valid phone number.";
+    else if(!cin||!cout||nights<1)err="Check-out must be after check-in.";
+    else if(!g||g<1)err="Enter at least 1 guest.";
+    else if(g>r.cap)err=r.name+" fits up to "+r.cap+" guests. Choose a bigger room.";
+    var base=nights>0?r.price*nights:0;
+    var bf=($("bf").checked&&g>0&&nights>0)?BF*g*nights:0;
+    var pk=$("pickup").checked?PICK:0;
+    var total=base+bf+pk;
+    var rows=[[r.name+(nights>0?" × "+nights+(nights===1?" night":" nights"):""),fmt(base)]];
+    if(bf)rows.push(["Breakfast",fmt(bf)]);
+    if(pk)rows.push(["Airport pickup",fmt(pk)]);
+    $("sum").innerHTML=rows.map(function(x){return '<div class="line"><dt>'+x[0]+'</dt><dd style="margin:0">'+x[1]+'</dd></div>'}).join("")+'<div class="line total"><dt>Total</dt><dd style="margin:0">'+fmt(total)+'</dd></div>';
+    $("err").textContent=touched?err:"";
+    var wa=$("wa");
+    if(err){wa.setAttribute("aria-disabled","true");wa.href="#book";}
+    else{
+      var msg=["Hello Jua Lakeside Hotel, I would like to request a booking.","","Name: "+$("name").value.trim(),"Phone: "+$("phone").value.trim(),"Room: "+r.name,"Check-in: "+cin,"Check-out: "+cout+" ("+nights+(nights===1?" night":" nights")+")","Guests: "+g,"Breakfast: "+($("bf").checked?"Yes":"No"),"Airport pickup: "+($("pickup").checked?"Yes":"No")];
+      if($("notes").value.trim())msg.push("Notes: "+$("notes").value.trim());
+      msg.push("","Estimated total: "+fmt(total));
+      wa.setAttribute("aria-disabled","false");
+      wa.href="https://wa.me/254715498648?text="+encodeURIComponent(msg.join("\n"));
+    }
+  }
+  $("cin").addEventListener("change",function(){
+    var c=new Date($("cin").value);c.setDate(c.getDate()+1);$("cout").min=iso(c);
+    if($("cout").value<=$("cin").value)$("cout").value=iso(c);
+    update();
+  });
+  ["name","phone","room","cout","guests","bf","pickup","notes"].forEach(function(id){
+    var go=function(){touched=true;update()};$(id).addEventListener("input",go);$(id).addEventListener("change",go);
+  });
+  $("wa").addEventListener("click",function(e){
+    if(this.getAttribute("aria-disabled")==="true"){e.preventDefault();touched=true;update();}
+  });
+  update();
+})();
+</script>
+<a href="../" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#111;color:#fff;font:700 14px system-ui,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3)">← Portfolio</a>
+</body>
+</html>

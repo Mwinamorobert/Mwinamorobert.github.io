@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tukio Events | Demo website by Robert Bulemi Charles</title>
+<meta name="description" content="Find events, compare ticket prices and reserve tickets online. A demo events booking website built by Robert Bulemi Charles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0d0e1a; --card:#171829; --line:#2a2c47; --text:#f1f1f8; --muted:#a2a5c7;
+  --pink:#ff5d8f; --mint:#7cf0c9; --ink:#0d0e1a; --field:#0f1020;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.02rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--display);line-height:1.12;margin:0;font-weight:800}
+h2{font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:.7rem}
+p{max-width:60ch;margin:0 0 1rem}
+section{padding:3.5rem 0}
+.sub{color:var(--muted);margin-bottom:1.8rem}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0}
+.logo{font:800 1.25rem var(--display);text-decoration:none}
+.logo b{color:var(--pink)}
+nav a.link{text-decoration:none;font-weight:700;color:var(--muted)}
+nav a.link:hover{color:var(--text)}
+
+.hero{padding:3rem 0 2rem;border-bottom:2px dashed var(--line)}
+.hero h1{font-size:clamp(2.3rem,8vw,5rem);max-width:13ch}
+.hero p{font-size:1.15rem;color:var(--muted);margin:1.2rem 0 1.8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.tools input,.tools select{background:var(--field);color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:.75rem 1.1rem;font:500 1rem var(--body)}
+.tools input{flex:1 1 240px;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.chip{font:700 .92rem var(--body);background:transparent;color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:.4rem 1rem;cursor:pointer}
+.chip:hover{border-color:var(--text)}
+.chip[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+
+.count{color:var(--muted);margin:0 0 1.2rem;font-weight:700}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.ticket{display:grid;grid-template-columns:92px 1fr;background:var(--card);border-radius:16px;position:relative}
+.stub{background:var(--pink);color:var(--ink);border-radius:16px 0 0 16px;display:grid;place-content:center;text-align:center;position:relative;border-right:2px dashed rgba(13,14,26,.45)}
+.stub::before,.stub::after{content:"";position:absolute;right:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg)}
+.stub::before{top:-10px}.stub::after{bottom:-10px}
+.stub b{display:block;font:800 2rem var(--display);line-height:1}
+.stub span{font-weight:800;text-transform:uppercase;font-size:.85rem;letter-spacing:.08em}
+.tbody{padding:1.2rem 1.3rem 1.3rem;display:flex;flex-direction:column;gap:.5rem}
+.tag{align-self:flex-start;font-size:.8rem;font-weight:800;color:var(--mint);border:1px solid var(--mint);border-radius:999px;padding:.05rem .65rem}
+.tbody h3{font-size:1.1rem}
+.meta{color:var(--muted);font-size:.93rem}
+.price{font-weight:800;color:var(--mint)}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pink)}
+.seats{font-size:.85rem;color:var(--muted)}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font:800 .98rem var(--body);text-decoration:none;text-align:center;border:2px solid var(--text);background:transparent;color:var(--text);cursor:pointer}
+.btn.main{background:var(--pink);border-color:var(--pink);color:var(--ink)}
+.btn.main:hover{background:#ff7aa3}
+.btn:not(.main):hover{background:rgba(255,255,255,.1)}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.4;cursor:not-allowed}
+.tbody .btn{margin-top:.4rem}
+.empty{border:2px dashed var(--line);border-radius:16px;padding:2rem;text-align:center;color:var(--muted)}
+.empty p{margin:0 auto 1rem}
+
+.book{display:grid;grid-template-columns:1.2fr 1fr;gap:1.6rem;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem}
+.panel h3{font-size:1.15rem;margin-bottom:1.1rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{display:block;font-weight:700;font-size:.9rem;margin-bottom:.9rem}
+label input,label select{display:block;width:100%;margin-top:.3rem;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:var(--field);color:var(--text);font:500 1rem var(--body)}
+.sumt{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.sumt .top{background:var(--pink);color:var(--ink);padding:1.2rem 1.4rem}
+.sumt .top small{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
+.sumt .top h3{font-size:1.1rem;margin-top:.2rem}
+.sumt .top div{font-weight:600;font-size:.93rem;margin-top:.3rem}
+.sumt .mid{border-top:2px dashed var(--line);padding:1.2rem 1.4rem}
+.line{display:flex;justify-content:space-between;gap:1rem;padding:.4rem 0}
+.total{font:800 1.3rem var(--display);padding-top:.8rem;margin-top:.4rem;border-top:1px solid var(--line)}
+.ref{color:var(--muted);font-size:.9rem;margin-top:.7rem}
+.err{color:#ff9db5;font-weight:600;min-height:1.5em;margin:.2rem 0 0}
+.sumt .btn{width:100%;margin-top:.6rem}
+.note{font-size:.86rem;color:var(--muted);margin:.9rem 0 0}
+
+.cta{background:var(--card);border-top:2px dashed var(--line);text-align:center}
+.cta p{margin:0 auto 1rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1.4rem}
+footer{padding:1.6rem 0 2.6rem;text-align:center;color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){.list,.book{grid-template-columns:1fr}}
+@media (max-width:420px){.row{grid-template-columns:1fr}.ticket{grid-template-columns:76px 1fr}.stub b{font-size:1.5rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">Tukio<b>.</b></a>
+    <a class="link" href="#book">Reserve tickets</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <h1>Find your next event.</h1>
+    <p>Concerts, conferences, festivals and workshops. Search, compare prices and reserve your tickets in a minute.</p>
+    <div class="tools">
+      <input id="q" type="search" placeholder="Search by event or city" aria-label="Search events">
+      <select id="sort" aria-label="Sort events"><option value="date">Soonest first</option><option value="price">Cheapest first</option></select>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+  </header>
+
+  <section id="events">
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section id="book">
+    <h2>Reserve your tickets</h2>
+    <p class="sub">Pick an event and ticket type. Your total updates as you go, then send the request on WhatsApp.</p>
+    <div class="book">
+      <div class="panel">
+        <h3>Your booking</h3>
+        <label>Event<select id="evt"></select></label>
+        <div class="row">
+          <label>Ticket type<select id="tier"><option value="reg">Regular</option><option value="vip">VIP</option></select></label>
+          <label>Tickets<input id="qty" type="number" min="1" value="2"></label>
+        </div>
+        <div class="row">
+          <label>Full name<input id="name" autocomplete="name" placeholder="Your name"></label>
+          <label>Phone number<input id="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx"></label>
+        </div>
+      </div>
+      <div class="sumt">
+        <div class="top"><small>Your ticket</small><h3 id="tName"></h3><div id="tWhen"></div></div>
+        <div class="mid">
+          <div id="lines"></div>
+          <div class="line total"><span>Total</span><span id="tTotal"></span></div>
+          <p class="ref" id="ref"></p>
+          <p class="err" id="err" role="alert"></p>
+          <a class="btn main" id="wa" href="#book" aria-disabled="true" target="_blank" rel="noopener">Reserve on WhatsApp</a>
+          <p class="note">This is a demo site. Requests go to the developer’s WhatsApp. Events and prices are examples.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Need a site like this?</h2>
+    <p>This events site is a demo I designed and built. I can build one for your events, business or organization, with booking that works.</p>
+    <div class="btns">
+      <a class="btn main" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20the%20events%20website%20you%20built%20and%20I%20need%20a%20website." target="_blank" rel="noopener">Hire Robert on WhatsApp</a>
+      <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=I%20need%20a%20website&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20the%20events%20website%20you%20built%20and%20I%20need%20a%20website.%0D%0A" target="_blank" rel="noopener">Send an email</a>
+      <a class="btn" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer>Tukio Events is a demo website designed and built by Robert Bulemi Charles.</footer>
+
+<script>
+(function(){
+  var now=new Date();
+  var EV=[
+    {id:"afro",name:"Afrobeats Night Live",cat:"Music",city:"Nairobi",venue:"Open Air Arena",off:6,time:"7:00 PM",reg:1500,vip:4000,cap:400,left:120},
+    {id:"tech",name:"Western Kenya Tech Summit",cat:"Conference",city:"Kisumu",venue:"Lakeside Convention Hall",off:12,time:"9:00 AM",reg:2000,vip:5500,cap:300,left:64},
+    {id:"food",name:"Coast Food and Culture Festival",cat:"Food",city:"Mombasa",venue:"Seafront Grounds",off:19,time:"11:00 AM",reg:800,vip:2500,cap:600,left:410},
+    {id:"expo",name:"Wedding and Events Expo",cat:"Expo",city:"Nairobi",venue:"Exhibition Hall",off:27,time:"10:00 AM",reg:500,vip:2000,cap:250,left:12},
+    {id:"web",name:"Build and Deploy: Web Dev Workshop",cat:"Workshop",city:"Online",venue:"Live on Zoom",off:34,time:"2:00 PM",reg:1000,vip:2500,cap:100,left:38},
+    {id:"praise",name:"Gospel Praise Concert",cat:"Music",city:"Eldoret",venue:"Community Stadium",off:45,time:"4:00 PM",reg:500,vip:3000,cap:500,left:0}
+  ];
+  EV.forEach(function(e){e.date=new Date(now.getFullYear(),now.getMonth(),now.getDate()+e.off)});
+  var $=function(id){return document.getElementById(id)};
+  var fmt=function(n){return "KSh "+n.toLocaleString("en-KE")};
+  var longDate=function(d){return d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long",year:"numeric"})};
+  var cats=["All"].concat(EV.map(function(e){return e.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
+  var cat="All",touched=false;
+  var ref="TK-"+Math.random().toString(36).slice(2,8).toUpperCase();
+
+  var chips=$("chips");
+  function drawChips(){
+    chips.innerHTML=cats.map(function(c){return '<button type="button" class="chip" data-cat="'+c+'" aria-pressed="'+(c===cat)+'">'+c+'</button>'}).join("");
+  }
+  chips.addEventListener("click",function(e){var b=e.target.closest("[data-cat]");if(!b)return;cat=b.getAttribute("data-cat");drawChips();render();});
+
+  function render(){
+    var q=$("q").value.trim().toLowerCase();
+    var res=EV.filter(function(e){
+      return (cat==="All"||e.cat===cat)&&(!q||(e.name+" "+e.city+" "+e.cat).toLowerCase().indexOf(q)>-1);
+    });
+    res.sort($("sort").value==="price"?function(a,b){return a.reg-b.reg}:function(a,b){return a.date-b.date});
+    $("count").textContent=res.length+(res.length===1?" event found":" events found");
+    if(!res.length){
+      $("list").innerHTML='<div class="empty" style="grid-column:1/-1"><p>No events match your search.</p><button class="btn" type="button" id="clear">Clear filters</button></div>';
+      $("clear").onclick=function(){$("q").value="";cat="All";drawChips();render();};
+      return;
+    }
+    $("list").innerHTML=res.map(function(e){
+      var pct=Math.round((e.cap-e.left)/e.cap*100);
+      var seats=e.left===0?"Sold out":(e.left<=20?"Only "+e.left+" left":e.left+" seats left");
+      return '<article class="ticket"><div class="stub"><div><b>'+e.date.getDate()+'</b><span>'+e.date.toLocaleDateString("en-GB",{month:"short"})+'</span></div></div>'+
+        '<div class="tbody"><span class="tag">'+e.cat+'</span><h3>'+e.name+'</h3>'+
+        '<div class="meta">'+e.time+' · '+e.venue+', '+e.city+'</div>'+
+        '<div class="price">From '+fmt(e.reg)+'</div>'+
+        '<div class="bar" role="img" aria-label="'+pct+' percent booked"><i style="width:'+pct+'%"></i></div><div class="seats">'+seats+'</div>'+
+        '<button class="btn main" type="button" data-id="'+e.id+'"'+(e.left===0?' disabled':'')+'>'+(e.left===0?"Sold out":"Get tickets")+'</button></div></article>';
+    }).join("");
+  }
+  $("list").addEventListener("click",function(ev){
+    var b=ev.target.closest("button[data-id]");if(!b||b.disabled)return;
+    $("evt").value=b.getAttribute("data-id");update();
+    $("book").scrollIntoView({behavior:"smooth"});
+  });
+  $("q").addEventListener("input",render);$("sort").addEventListener("change",render);
+
+  EV.forEach(function(e){
+    var o=document.createElement("option");o.value=e.id;o.textContent=e.name+(e.left===0?" (sold out)":"");o.disabled=e.left===0;$("evt").appendChild(o);
+  });
+  $("evt").value="afro";
+
+  function update(){
+    var e=EV.filter(function(x){return x.id===$("evt").value})[0];
+    var vip=$("tier").value==="vip",unit=vip?e.vip:e.reg,q=parseInt($("qty").value,10);
+    var err="";
+    if(!$("name").value.trim())err="Please enter your name.";
+    else if($("phone").value.replace(/\D/g,"").length<9)err="Please enter a valid phone number.";
+    else if(!q||q<1)err="Choose at least 1 ticket.";
+    else if(q>e.left)err="Only "+e.left+" tickets are left for this event.";
+    else if(q>10)err="You can reserve up to 10 tickets at a time.";
+    var total=(q>0?q:0)*unit;
+    $("tName").textContent=e.name;
+    $("tWhen").textContent=longDate(e.date)+" · "+e.time+" · "+e.city;
+    $("lines").innerHTML='<div class="line"><span>'+(vip?"VIP":"Regular")+' × '+(q>0?q:0)+'</span><span>'+fmt(unit)+' each</span></div>';
+    $("tTotal").textContent=fmt(total);
+    $("ref").textContent="Booking reference: "+ref;
+    $("err").textContent=touched?err:"";
+    var wa=$("wa");
+    if(err){wa.setAttribute("aria-disabled","true");wa.href="#book";}
+    else{
+      var msg=["Hello Tukio Events, I would like to reserve tickets.","","Reference: "+ref,"Event: "+e.name,"Date: "+longDate(e.date)+", "+e.time,"Venue: "+e.venue+", "+e.city,"Tickets: "+q+" × "+(vip?"VIP":"Regular"),"Name: "+$("name").value.trim(),"Phone: "+$("phone").value.trim(),"","Total: "+fmt(total)];
+      wa.setAttribute("aria-disabled","false");
+      wa.href="https://wa.me/254715498648?text="+encodeURIComponent(msg.join("\n"));
+    }
+  }
+  ["evt","tier","qty","name","phone"].forEach(function(id){
+    var go=function(){touched=true;update()};
+    $(id).addEventListener("input",go);$(id).addEventListener("change",go);
+  });
+  $("wa").addEventListener("click",function(ev){
+    if(this.getAttribute("aria-disabled")==="true"){ev.preventDefault();touched=true;update();}
+  });
+  drawChips();render();update();
+})();
+</script>
+<a href="../" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#111;color:#fff;font:700 14px system-ui,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3)">← Portfolio</a>
+</body>
+</html>

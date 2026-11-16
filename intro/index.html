@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robert Bulemi Charles | Software Engineer, Web Designer and Videographer</title>
+<meta name="description" content="Software engineer, web designer, videographer, photographer and video editor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0f1222; --surface:#171b33; --line:#2a3058; --text:#eceefb; --muted:#9ba2c9;
+  --code:#6ea8ff; --lens:#ff8aa8;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--code);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.4rem}
+section{padding:4.5rem 0}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:1.6rem}
+p{max-width:62ch;margin:0 0 1rem}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 0}
+nav .logo{font:800 1.15rem var(--display);text-decoration:none}
+nav a.hire{font-weight:500;text-decoration:none;color:var(--muted)}
+nav a.hire:hover{color:var(--text)}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding:3rem 0 4.5rem}
+.hero h1{font-size:clamp(3rem,9vw,5.6rem);font-weight:800}
+.hero h1 span{display:block;color:var(--muted);font-weight:500}
+.lead{font-size:1.2rem;color:var(--muted);margin:1.5rem 0 2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem}
+.btn{display:inline-block;padding:.85rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--line);transition:background .15s,border-color .15s}
+.btn.main{background:var(--code);border-color:var(--code);color:#0b1020}
+.btn.main:hover{background:#8dbbff}
+.btn:not(.main):hover{border-color:var(--text)}
+
+.frame{position:relative;background:var(--surface);border-radius:10px;padding:2rem 1.6rem 1.6rem}
+.frame::before,.frame::after{content:"";position:absolute;width:28px;height:28px;border:3px solid var(--lens)}
+.frame::before{top:-9px;left:-9px;border-right:0;border-bottom:0}
+.frame::after{bottom:-9px;right:-9px;border-left:0;border-top:0}
+.live{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);margin-bottom:1.1rem}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--lens);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+pre{margin:0;font:500 .92rem/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-x:auto;color:var(--text)}
+.k{color:var(--code)}.s{color:var(--lens)}
+
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem}
+.facts{display:grid;gap:1rem;align-content:start}
+.fact{border-left:3px solid var(--line);padding:.2rem 0 .2rem 1rem}
+.fact b{display:block;font-family:var(--display);font-size:1.15rem}
+.fact span{color:var(--muted);font-size:.95rem}
+
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.panel{background:var(--surface);border-radius:10px;padding:1.6rem;border-top:4px solid var(--code)}
+.panel.create{border-top-color:var(--lens)}
+.panel h3{font-size:1.4rem;margin-bottom:.4rem}
+.panel p{color:var(--muted);font-size:.97rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:1.1rem 0 0;padding:0}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:.3rem .85rem;font-size:.93rem}
+
+.contact{background:var(--surface);border-radius:14px;padding:3rem 2rem;text-align:center}
+.contact h2{margin-bottom:.8rem}
+.contact p{margin:0 auto 1.8rem;color:var(--muted)}
+.contact .btns{justify-content:center}
+.direct{margin-top:1.6rem;color:var(--muted);font-size:.95rem}
+footer{padding:2rem 0 2.5rem;text-align:center;color:var(--muted);font-size:.9rem}
+
+@media (max-width:760px){
+  .hero,.about,.skills{grid-template-columns:1fr}
+  .hero{gap:2.5rem}
+  section{padding:3.2rem 0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero>*{animation:rise .7s ease both}
+  .hero>*:nth-child(2){animation-delay:.15s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.live i{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top">Robert B. Charles</a>
+    <a class="hire" href="#contact">Get in touch</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Robert Bulemi Charles <span>builds it, then films it.</span></h1>
+      <p class="lead">Software engineer, web designer, videographer, photographer and video editor. I build web apps that work well and make the visuals around them look good.</p>
+      <div class="btns">
+        <a class="btn main" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Message on WhatsApp</a>
+        <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk%20about%20a%20project.%0D%0A" target="_blank" rel="noopener">Send an email</a>
+        <a class="btn" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="frame" aria-label="Quick profile">
+      <div class="live"><i></i>Open to new projects</div>
+<pre><span class="k">const</span> robert = {
+  role: <span class="s">"Software engineer"</span>,
+  builds: [<span class="s">"Java"</span>, <span class="s">"React"</span>, <span class="s">"Python"</span>],
+  shoots: [<span class="s">"Photo"</span>, <span class="s">"Video"</span>],
+  edits: <span class="s">"Premiere, DaVinci, FCP"</span>,
+  available: <span class="k">true</span>
+};</pre>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About me</h2>
+    <div class="about">
+      <div>
+        <p>I’m a software engineer. I build web applications with Java, React, Python and databases, and I design the websites they live on.</p>
+        <p>Away from the keyboard I work with a camera. I shoot photos and video and edit them myself, so a project can come from one person: the code, the design and the content.</p>
+        <p>I like clear briefs, honest timelines and work I’m proud to put my name on.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>Software and web</b><span>Apps, websites and databases</span></div>
+        <div class="fact"><b>Photo and video</b><span>Shooting and editing</span></div>
+        <div class="fact"><b>One point of contact</b><span>Build, design and content together</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>What I work with</h2>
+    <div class="skills">
+      <div class="panel">
+        <h3>Build</h3>
+        <p>Software and web development, from the database to the screen.</p>
+        <ul class="chips">
+          <li>Java</li><li>React</li><li>Python</li><li>Databases</li><li>Web design</li><li>More languages as the project needs</li>
+        </ul>
+      </div>
+      <div class="panel create">
+        <h3>Create</h3>
+        <p>Photo and video work, from the shoot to the final edit.</p>
+        <ul class="chips">
+          <li>Videography</li><li>Photography</li><li>Premiere Pro</li><li>DaVinci Resolve</li><li>Final Cut Pro</li><li>Photoshop</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Let’s work together</h2>
+      <p>Tell me what you need built, designed or filmed. I’ll reply with next steps.</p>
+      <div class="btns">
+        <a class="btn main" href="https://wa.me/254715498648?text=Hello%20Robert%2C%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp me</a>
+        <a class="btn" href="mailto:bulemicharlesrobert@gmail.com?subject=Project%20enquiry%20from%20your%20portfolio&amp;body=Hello%20Robert%2C%0D%0A%0D%0AI%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20talk%20about%20a%20project.%0D%0A" target="_blank" rel="noopener">bulemicharlesrobert@gmail.com</a>
+        <a class="btn" href="tel:+254715498648">0715 498 648</a>
+        <a class="btn" href="https://github.com/Mwinamorobert" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Robert Bulemi Charles</footer>
+</div>
+<a href="../" style="position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;background:#111;color:#fff;font:700 14px system-ui,sans-serif;text-decoration:none;padding:9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.3)">← Portfolio</a>
+</body>
+</html>
